@@ -1,0 +1,10 @@
+{
+  "name": "ap-verification-api",
+  "version": "0.0.0",
+  "description": "APVerificationAPI",
+  "main": "test.js",
+  "type": "module",
+  "author": {
+    "name": ""
+  }
+}
