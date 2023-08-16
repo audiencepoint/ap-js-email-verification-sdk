@@ -1,6 +1,6 @@
-const API_URL = 'https://api.audiencepoint.com/v1/stg-email-verification';
+const API_URL = 'https://api.audiencepoint.com/v1/email-verification';
 
-class APVerificationAPI {
+class APVerificationSDK {
     constructor(apiKey) {
         this.apiKey = apiKey;
     }

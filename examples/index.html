@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-    <script src="../src/APVerificationAPI.js"></script>
+    <script src="../src/APVerificationSDK.js"></script>
     <title>Test HTML Page</title>
     </head>
     <body>
@@ -16,7 +16,7 @@
     <script>
         document.getElementById("myForm").onsubmit = function(){
             const email = document.getElementById("email").value;
-            const verificationAPI = new APVerificationAPI('123:RandomTestKey1c0qw8ejv890qev9');
+            const verificationAPI = new APVerificationSDK("<YOUR_API_KEY>");
             verificationAPI.verifyEmail(email)
                 .then(res => {
                     document.getElementById("address").innerHTML = `Email Address: ${res.Email}`;
