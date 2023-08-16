@@ -1,23 +1,24 @@
 const API_URL = 'https://api.audiencepoint.com/v1/stg-email-verification';
 
-export default class APVerificationAPI {
+class APVerificationAPI {
     constructor(apiKey) {
         this.apiKey = apiKey;
     }
 
     verifyEmail(email) {
-
         const options = {
-            method: 'GET',
+            method: 'POST',
             headers: {
-                'x-api-key': this.apiKey
+                'x-api-key': this.apiKey,
+                'Content-Type': "application/json",
+                'Accept': "*/*"
             },
+            body: `{"email": "${email}"}`,
         };
 
         let response = null;
-        let url = `${API_URL}?email=${email}`;
 
-        return fetch(url, options)
+        return fetch(API_URL, options)
             .then(responseObject => {
                 // Saving response for later use in lower scopes
                 response = responseObject;

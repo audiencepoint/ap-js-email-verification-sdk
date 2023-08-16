@@ -1,13 +1,36 @@
 <!doctype html>
 <html>
     <head>
-    <script src="../src/EmailVerificationWrapper.js" type="module"></script>
+    <script src="../src/APVerificationAPI.js"></script>
     <title>Test HTML Page</title>
     </head>
     <body>
-        <form>
-            <input type="text" id="myform"/>
+        <form id="myForm" name="myForm">
+            <input type="text" id="email"/>
             <input type="submit"/>
-        </form>
+        </form><br>
+        <div id="address"></div><br>
+        <div id="result"></div><br>
+        <div id="suggestion"></div><br>
     </body>
+    <script>
+        document.getElementById("myForm").onsubmit = function(){
+            const email = document.getElementById("email").value;
+            const verificationAPI = new APVerificationAPI('123:RandomTestKey1c0qw8ejv890qev9');
+            verificationAPI.verifyEmail(email)
+                .then(res => {
+                    document.getElementById("address").innerHTML = `Email Address: ${res.Email}`;
+                    document.getElementById("result").innerHTML = `Result: ${res.Result}`;
+                    if (res.Suggestion != null)
+                        document.getElementById("suggestion").innerHTML = `Suggestion: ${res.Suggestion}`;
+                    else
+                        document.getElementById("suggestion").innerHTML = "";
+                })
+                .catch(error => {
+                    alert(error.message);
+                    alert(error.status);
+                });
+            return false;
+        };
+    </script>
 </html>
